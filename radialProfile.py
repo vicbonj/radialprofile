@@ -1,6 +1,6 @@
 import numpy as np
 
-def azimuthalAverage(image, centerx=None, centery=None, type='mean'):
+def azimuthalAverage(image, (centerx, centery)=(None, None), type='mean'):
     '''
     Compute spherically symetric profiles around a center
 
@@ -11,9 +11,9 @@ def azimuthalAverage(image, centerx=None, centery=None, type='mean'):
 
     y, x = np.indices(image.shape)
 
-    if centerx == centery == None:
+    if (centerx is None) & (centery is None):
         centerx = (image.shape[0]-1)/2.
-        centerx = (image.shape[0]-1)/2.
+        centery = (image.shape[0]-1)/2.
 
     r = np.hypot(x - centerx, y - centery)
 
